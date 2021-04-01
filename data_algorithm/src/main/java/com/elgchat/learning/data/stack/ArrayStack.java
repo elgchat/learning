@@ -6,15 +6,23 @@ package com.elgchat.learning.data.stack;
 public class ArrayStack {
 
     int[] nums = new int[8];
-    int count;
+
+    /**
+     * 栈顶
+     */
+    int head;
+    /**
+     * 栈尾
+     */
+    int foot;
 
     /**
      * 入栈
      * @param num 值
      */
     public void push(int num) {
-        nums[count] = num;
-        count++;
+        head++;
+        nums[head] = num;
     }
 
     /**
@@ -22,9 +30,9 @@ public class ArrayStack {
      * @return int
      */
     public int pop() {
-        int num = nums[count-1];
-        nums[count-1] = 0;
-        count--;
+        int num = nums[head];
+        nums[head] = 0;
+        head--;
         return num;
     }
 
@@ -40,7 +48,7 @@ public class ArrayStack {
 
         return "Stack{" +
                 "nums=" + numStr +
-                ", count=" + count +
+                " count=" + head +
                 '}';
     }
 

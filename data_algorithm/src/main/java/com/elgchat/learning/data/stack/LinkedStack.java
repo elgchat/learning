@@ -3,7 +3,8 @@ package com.elgchat.learning.data.stack;
 public class LinkedStack {
 
     private Node node;
-    private int len;
+
+    private int size;
 
     /**
      * 入栈
@@ -12,17 +13,12 @@ public class LinkedStack {
      */
     public void push(Object data) {
 
-        if (null == this.node) {
+        if (size == 0) {
             init(data);
-            return;
+        }else {
+            this.node = new Node(data,this.node);
+            size++;
         }
-
-        Node node = this.node;
-        while (node.next != null) {
-            node = node.next;
-        }
-        node.next = new Node(data, null);
-        this.len++;
     }
 
 
@@ -32,16 +28,11 @@ public class LinkedStack {
      * @return data
      */
     public Object pop() {
-        int len = 0;
+
         Node node = this.node;
-        while (len != (this.len - 1)) {
-            node = node.next;
-            len++;
-        }
-        Object data = node.next.data;
-        node.next = null;
-        this.len--;
-        return data;
+        this.node = node.next;
+        size--;
+        return node.data;
     }
 
     @Override
@@ -58,6 +49,7 @@ public class LinkedStack {
 
     private void init(Object data) {
         this.node = new Node(data);
+        size++;
     }
 
     public static class Node {
