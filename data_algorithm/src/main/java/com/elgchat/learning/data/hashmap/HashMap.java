@@ -30,9 +30,7 @@ public class HashMap {
             while (datum.next != null) {
                 datum = datum.next;
             }
-
             datum.next = new Node(hash, key, value);
-
         }
         size++;
     }
@@ -67,7 +65,6 @@ public class HashMap {
             size--;
             return value;
         }
-
     }
 
     int hash(Object key) {
