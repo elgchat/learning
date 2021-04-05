@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class HashMap {
 
-    public Node[] data = new Node[8];
+    public Node[] data = new Node[10];
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int size;
 
@@ -16,7 +16,7 @@ public class HashMap {
      * @param value 值
      */
     public void put(Object key, Object value) {
-
+        key = key.toString();
         if (size >= data.length * DEFAULT_LOAD_FACTOR) {
             System.out.println("触发扩容");
             return;
@@ -42,6 +42,7 @@ public class HashMap {
      * @return data
      */
     public Object get(Object key) {
+        key = key.toString();
         int hash = hash(key);
 
         if (data[hash] == null) {
@@ -52,12 +53,12 @@ public class HashMap {
             return data[hash].value;
         } else {
             Node datum = data[hash];
-            while (datum.next != null && datum.next.key.equals(key)) {
+            while (datum.next != null && datum.key.equals(key)) {
                 datum = datum.next;
             }
             Object value = datum.value;
 
-            if (datum.next == null || datum.next.next == null) {
+            if (datum.next == null || datum.next.next == null || !value.equals(key)) {
                 datum.next = null;
             } else {
                 datum.next = datum.next.next;
@@ -118,13 +119,19 @@ public class HashMap {
     public static void main(String[] args) {
         HashMap hashMap = new HashMap();
         //随机插入8条，为了达到阈值，触发扩容
-        for (int i = 0; i < 8; i++) {
-            //当i大于3时，key全部改为1，为了模拟hash碰撞
-            hashMap.put(i > 3 ? 1 : i, Math.random());
-        }
+//        for (int i = 0; i < 8; i++) {
+//            //当i大于3时，key全部改为1，为了模拟hash碰撞
+//            hashMap.put(i > 3 ? 1 : i, Math.random());
+//        }
+        hashMap.put(1,"李虎");
+        hashMap.put(11,"赵四");
+        hashMap.put(12,"张三");
+        hashMap.put(21,"王五");
+        hashMap.put(31,"唐七");
+        hashMap.put(11,"赵四1");
         System.out.println(hashMap.toString());
 
         //输出指定
-        System.out.println(hashMap.get(1));
+        System.out.println(hashMap.get(11));
     }
 }

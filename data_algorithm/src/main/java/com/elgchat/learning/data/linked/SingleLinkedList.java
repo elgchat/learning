@@ -184,7 +184,7 @@ public class SingleLinkedList {
     /**
      * 定义node节点
      */
-    public static class Node {
+    public static class  Node {
 
         private Object data;
 
