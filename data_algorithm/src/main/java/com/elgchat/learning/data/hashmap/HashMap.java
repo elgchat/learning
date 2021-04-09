@@ -2,6 +2,9 @@ package com.elgchat.learning.data.hashmap;
 
 import java.util.Arrays;
 
+/**
+ * 模拟hashmap
+ */
 public class HashMap {
 
     public Node[] data = new Node[10];

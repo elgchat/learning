@@ -1,7 +1,9 @@
 package com.elgchat.learning.data.queue;
 
 
-
+/**
+ * 链表模拟队列实现
+ */
 public class LinkedQueue {
 
     /**

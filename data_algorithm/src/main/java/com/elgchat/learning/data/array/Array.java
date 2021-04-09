@@ -62,12 +62,10 @@ public class Array {
             System.out.println("下标越界");
             return;
         }
-
         array[len] = array[len - 1];
         if (len - 1 - i >= 0) System.arraycopy(array, i, array, i + 1, len - 1 - i);
         array[i] = value;
         len ++;
-
     }
 
     /**

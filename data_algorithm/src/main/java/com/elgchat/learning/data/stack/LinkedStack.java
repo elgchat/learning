@@ -1,5 +1,8 @@
 package com.elgchat.learning.data.stack;
 
+/**
+ * 链表模拟栈实现
+ */
 public class LinkedStack {
 
     private Node node;
