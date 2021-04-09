@@ -15,7 +15,6 @@ public class Recursive {
         return calculate(num - 1) + calculate(num - 2);
     }
 
-
     public static void main(String[] args) {
         System.out.println("斐波那契数列的前20项为：");
         for (int j = 1; j <= 20; j++) {
