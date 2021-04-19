@@ -47,18 +47,55 @@ public class BinarySearch {
         return recursiveSearch(nums, num, low, height);
     }
 
-    private static int bruteForce(int[] nums1) {
-
-        return 0;
+    private static int calculate(int[] nums) {
+        //低位索引
+        int low = 0;
+        //高位索引
+        int high = nums.length - 1;
+        //中间索引
+        int mid = 0;
+        while (low <= high) {
+            mid = (low + high) / 2;
+            //偶数位
+            if (mid % 2 == 0) {
+                // 与后面的数相等
+                if (nums[mid] == nums[mid + 1]) {
+                    //前面的都对
+                    low = mid + 1;
+                    // 与前面的数相等
+                } else if (nums[mid] == nums[mid - 1]) {
+                    //后面的都对
+                    high = mid - 1;
+                    // 就是这个数
+                } else {
+                    return nums[mid];
+                }
+                //奇数位
+            } else {
+                // 与前面的数相等
+                if (nums[mid] == nums[mid - 1]) {
+                    //前面的都对
+                    low = mid + 1;
+                    //与后面的数相等
+                } else if (nums[mid] == nums[mid + 1]) {
+                    //后面的都对
+                    high = mid - 1;
+                    // 就是这个数
+                } else {
+                    return nums[mid];
+                }
+            }
+        }
+        return nums[low];
     }
-
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 11, 12, 13, 22, 23, 24, 33, 34, 35, 36};
         System.out.println(binarySearch(nums, 24));
         System.out.println(recursiveSearch(nums, 12, 0, nums.length - 1));
 
-        int[] nums1 = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 11, 11};
-        System.out.println(bruteForce(nums1));
+        int[] num2 = {1, 1, 2, 2, 3, 3, 4, 5, 5};
+        int[] num3 = {1, 1, 2, 3, 3, 4, 4, 5, 5};
+        System.out.println(calculate(num3));
     }
 }
