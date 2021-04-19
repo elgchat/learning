@@ -1,6 +1,9 @@
-package com.elgchat.learning;
+package com.elgchat.learning.basis;
 
-public class Test {
+/**
+ * 99乘法表
+ */
+public class Haskell {
 
     public static void main(String[] args) {
 
